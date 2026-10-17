@@ -10,7 +10,6 @@ from pathlib import Path
 
 import pytest
 
-
 PROJECT_ROOT = next(
     (
         candidate
@@ -216,7 +215,7 @@ def test_non_ascii_message_is_preserved_as_utf8_without_bom(tmp_path: Path) -> N
     data = output.read_bytes()
     assert data.startswith(b"level,service,message,count,first_seen,last_seen")
     assert not data.startswith(b"\xef\xbb\xbf")
-    assert "Café ☃".encode("utf-8") in data
+    assert "Café ☃".encode() in data
     _, rows = read_summary(output)
     assert rows[0]["message"] == "Café ☃"
 

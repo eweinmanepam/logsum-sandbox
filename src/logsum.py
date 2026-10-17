@@ -8,7 +8,7 @@ import os
 import re
 import sys
 import tempfile
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 REQUIRED_FIELDS = ("timestamp", "level", "service", "message")
@@ -28,7 +28,7 @@ class LogsumError(Exception):
 
 def _normalize_level(value: str) -> str:
     value = value.strip().upper()
-    return value
+    return value or "UNKNOWN"
 
 
 def _normalize_service(value: str) -> str:
@@ -45,7 +45,7 @@ def _parse_timestamp(value: str, record_number: int) -> datetime:
     normalized = value[:-1] + "+00:00" if value.endswith("Z") else value
     try:
         parsed = datetime.fromisoformat(normalized)
-        return parsed.astimezone(timezone.utc)
+        return parsed.astimezone(UTC)
     except (ValueError, OverflowError) as exc:
         raise LogsumError(
             f"record {record_number}: invalid timestamp {value!r}"
