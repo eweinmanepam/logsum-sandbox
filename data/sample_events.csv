@@ -1,0 +1,4 @@
+timestamp,level,service,message
+2026-01-02T11:30:00-01:00, ERROR ,Payments,connection   timeout
+2026-01-02T12:00:00Z,error,payments,connection timeout
+2026-01-02T13:30:00+01:00, ,Inventory,Stock  low
