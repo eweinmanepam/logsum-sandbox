@@ -1,0 +1,6 @@
+message,extra,timestamp,service,level
+" Disk　FULL	 !! ",ignored,2026-02-03T04:05:06.12+02:30,"  Straße  "," error "
+"Disk FULL !!",ignored,2026-02-03T01:35:06.120000Z,STRASSE,ERROR
+"Disk FULL    !!",ignored,2026-02-03T01:35:06.13Z,strasse,ERROR
+"Disk, full",ignored,2026-02-03T01:35:06Z," Straße ",ERROR
+"disk full !!",ignored,2026-02-03T01:35:06Z,strasse,error
